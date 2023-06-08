@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    var transportOptions = [
+      { value: 1, name: "Легковой автомобиль", price: 100 },
+      { value: 2, name: "Грузовой автомобиль", price: 200 },
+      { value: 3, name: "Мототранспорт", price: 50 }
+    ];
+
+    var modelOptions = [
+      { value: 1, name: "Седан", price: 50 },
+      { value: 2, name: "Кроссовер", price: 70 },
+      { value: 3, name: "Хэтчбэк", price: 60 },
+      { value: 4, name: "Лифтбэк", price: 55 },
+      { value: 5, name: "Внедорожник", price: 80 }
+    ];
+
+    
+    function fillFields() {
+      var transportSelect = document.getElementById("transport");
+      var modelSelect = document.getElementById("model");
+      var priceInput = document.getElementById("priceofpolis");
+
+      var selectedTransport = transportOptions.find(option => option.value == transportSelect.value);
+      var selectedModel = modelOptions.find(option => option.value == modelSelect.value);
+
+    
+      if (selectedTransport && selectedModel) {
+        priceInput.value = selectedTransport.price + selectedModel.price;
+      }
+    }
+  </script>
+</head>
+<body bgcolor="lightgray">
+  <form>
+    <h1>Обязательное страхование транспортного средства</h1>
+    <p>Тип транспортного средства
+      <select id="transport" name="transport" onchange="fillFields()">
+        <option value="1">Легковой автомобиль</option>
+        <option value="2">Грузовой автомобиль</option>
+        <option value="3">Мототранспорт</option>
+      </select>
+    </p>
+    <p>Модель кузова
+      <select id="model" name="model" onchange="fillFields()">
+        <option value="1">Седан</option>
+        <option value="2">Кроссовер</option>
+        <option value="3">Хэтчбэк</option>
+        <option value="4">Лифтбэк</option>
+        <option value="5">Внедорожник</option>
+      </select>
+    </p>
+    <p>
+      Стоимость полиса
+      <input id="priceofpolis" name="priceofpolis" type="text" readonly />
+    </p>
+  </form>
+</body>
+</html>
